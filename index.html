@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="javascript.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
@@ -20,14 +21,20 @@
 	</div>
 
 	<div class="container">
-		<div class="row"></div>
-		<span class="public-word"></span>
+		<div class="row">
+		<span class="col-md-6 public-word"></span>
+		</div>
+	</div>
+
+	<br>
+
+	<div>
 
 		<ul>
-			<li class="guessed-letters"></li>
-			<li class="guesses-left"></li>
-			<li class="wins"></li>
-			<li class="losses"></li>
+			<div class="row guessed-letters">Letters Guessed:</div>
+			<div class="guesses-left"></div>
+			<div class="wins">Wins:</div>
+			<div class="losses">Losses:</div>
 		</ul>
 	</div>
 </body>
