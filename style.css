@@ -10,9 +10,8 @@ div {
 .public-word {
 	font-size: 200%;
 	letter-spacing: 20px;
-	color: blue;
 }
 
 body {
-	background: yellow;
+	background: rgb(180, 255, 130);
 }
