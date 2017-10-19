@@ -25,7 +25,7 @@ $(document).ready(function() {
         setUpGame: function() {
             console.log("run game set up");
 
-
+            $(".guessed-letters").empty();
             this.guessesLeft = 0;
             this.totalGuesses = 0;
             this.matchedLetters = [];

@@ -4,7 +4,7 @@
 }
 
 div {
-	text-align: center;
+	
 }
 
 .public-word {
@@ -13,5 +13,13 @@ div {
 }
 
 body {
+	text-align: center;
 	background: rgb(180, 255, 130);
+}
+
+h1 {
+	background: rgb(195, 214, 70);
+	border: 5px;
+	border-color: rgb(53, 193, 40);
+
 }
