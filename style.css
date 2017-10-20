@@ -8,6 +8,8 @@ div {
 }
 
 .public-word {
+	padding-right: 35%;
+	text-align: center;
 	font-size: 200%;
 	letter-spacing: 20px;
 }
@@ -17,9 +19,23 @@ body {
 	background: rgb(180, 255, 130);
 }
 
-h1 {
+form {
+	background: rgb(200, 275, 150);
+	width: 100%;
+
+}
+
+h2 {
 	background: rgb(195, 214, 70);
-	border: 5px;
+	border-style: solid;
+	border: 20px;
 	border-color: rgb(53, 193, 40);
 
+}
+
+
+.game-view {
+	background-color: white;
+	margin-right: 25%; 
+	margin-left: 25%;
 }

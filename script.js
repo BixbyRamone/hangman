@@ -1,8 +1,13 @@
 $(document).ready(function() {
 
+	var wins = 0;
+    var losses = 0;
+
+	function hangGame() {
+
     var hangmanGame = {
 
-        words: ["elephant", "walrus", "two dogs", "fox", "salamander", "cat", "dog", "condor", "ardvark"],
+        words: ["elephant", "walrus", "two dogs", "fox", "salamander", "cat", "dog", "condor", "ardvark", "ant eater", "fruit bat"],
         alphabet: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
         // words: ["two dogs"],
 
@@ -14,18 +19,18 @@ $(document).ready(function() {
         guessesLeft: 0,
         totalGuesses: 0,
         letterGuessed: null,
-        wins: 0,
-        losses: 0,
+        
         filledInLetters: 0,
-
-        logFunction: function(word) {
-            console.log(word);
-        },
+        gameComplete: false,
 
         setUpGame: function() {
             console.log("run game set up");
 
+            $(".on-complete").hide();
+
             $(".guessed-letters").empty();
+            this.gameComplete = false;
+            // console.log(this.gameComplete);
             this.guessesLeft = 0;
             this.totalGuesses = 0;
             this.matchedLetters = [];
@@ -43,7 +48,6 @@ $(document).ready(function() {
             //setUpArrayForAnswer function removes redundant letters, since in hangman, letteres only need to be guess once. Helps comparing later.
             this.editedLettersOfWord = this.setUpArrayForAnswer(this.lettersOfTheWord);
             console.log(this.lettersOfTheWord);
-            console.log(this.editedLettersOfWord);
 
             //converts word to dashes to be displayed.
             this.constructWordView();
@@ -78,7 +82,6 @@ $(document).ready(function() {
                 }
             }
 
-            console.log(publicWord);
             $(".public-word").html(publicWord);
 
         },
@@ -90,8 +93,6 @@ $(document).ready(function() {
             if (this.matchedLetters.indexOf(letter) === -1) {
 
                 this.matchedLetters.push(letter);
-                console.log(this.matchedLetters);
-                console.log(this.guessedLetters);
             } else {
                 console.log("already played letter!");
             }
@@ -103,19 +104,12 @@ $(document).ready(function() {
         },
 
         wrongGuess: function(letter) {
-            console.log("===============================");
-            console.log(letter)
-            console.log(this.matchedLetters.indexOf(letter));
-            console.log(this.matchedLetters.indexOf(letter));
-            console.log("===============================");
+            
 
             if (this.guessedLetters.indexOf(letter) === -1 && this.alphabet.indexOf(letter) !== -1) {
                 this.guessedLetters.push(letter);
-                console.log(this.guessedLetters);
-                console.log(this.matchedLetters);
                 this.guessesLeft--;
                 // this.checkResults();
-                console.log(this.guessesLeft);
             } else {
                 console.log("already played letter!");
 
@@ -159,19 +153,22 @@ $(document).ready(function() {
 
             }
 
-            console.log(this.guessesLeft);
         },
 
         checkResults: function() {
 
             if (this.guessesLeft === 0) {
-            	this.losses ++;
+            	this.gameComplete = true;
+            	losses ++;
                 console.log(" game lost!");
-                this.setUpGame();
+                // this.setUpGame();
+                this.finishGameFunction();
             } else if (this.matchedLetters.length === this.editedLettersOfWord.length) {
                 console.log("game won! ");
-                this.wins++;
-                this.setUpGame();
+                this.gameComplete = true;
+                wins++;
+                // this.setUpGame();
+                this.finishGameFunction();
             }
 
         },
@@ -200,8 +197,8 @@ $(document).ready(function() {
             // 	$(".guessed-letters").append( " " + this.guessedLetters[i])
             // }
 
-            $(".wins").html("Wins: " + this.wins);
-            $(".losses").html("Losses: " + this.losses);
+            $(".wins").html("Wins: " + wins);
+            $(".losses").html("Losses: " + losses);
 
         },
 
@@ -225,7 +222,43 @@ $(document).ready(function() {
 
             return out;
 
-        }
+        },
+
+        finishGameFunction: function() { 	
+
+        	$(".on-complete").show();
+
+        	var publicWord = "";
+
+            for (var i = 0; i < this.lettersOfTheWord.length; i++) {
+                
+                    publicWord += this.lettersOfTheWord[i];
+                } 
+
+                console.log("finishGameFunction");
+            
+            $(".public-word").html(publicWord);
+
+            // setInterval(function(){}, 3000);
+
+            event = null;
+
+            document.onkeyup = function(event) {
+
+            	if (event) {
+            		event = null;
+            		hangmanGame.gameComplete = false;
+            		hangGame();
+
+            	}
+            }
+    }
+
+
+
+        
+
+
 
 
 
@@ -238,6 +271,8 @@ $(document).ready(function() {
 
     //at t his point, letters of word has a randomly chosen word in it, guess letters is empty, matched letters is empty
 
+
+    if (hangmanGame.gameComplete === false ) {
     document.onkeyup = function(event) {
 
         // if (hangmanGame.alphabet.indexOf(event.key) !== -1) {
@@ -249,7 +284,10 @@ $(document).ready(function() {
         hangmanGame.checkResults();
         hangmanGame.constructWordView();
         hangmanGame.displayGame();
-
+    }
 
     }
+}
+
+hangGame();
 });

@@ -3,7 +3,7 @@
 
 <head>
     <title></title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- Optional theme -->
@@ -15,31 +15,42 @@
 </head>
 
 <body>
-	<div id="titles" class="col-sm-12">
-		<h1>ANIMAL HANGMAN</h1>
-
-	</div>
-	<br>
-
-	<div class="container">
-		<div class="row">
-		<span class="public-word">Loading...</span>
-		</div>
-	</div>
-
-	<br>
-
-	<br>
-
-	<div>
-
-		<ul>
-			<div class="row guessed-letters">Letters Guessed:</div>
-			<div class="guesses-left"></div>
-			<div class="wins">Wins:</div>
-			<div class="losses">Losses:</div>
-		</ul>
-	</div>
+    <div class="container">
+        <div class="row">
+            <form class="navbar-form navbar-center">
+                <button type="submit" class="btn btn-default">Give Up</button>
+                <button type="submit" class="btn btn-default">Reset</button>
+            </form>
+        </div>
+    </div>
+    </div>
+   
+    <div id="titles">
+        <h2 class="title-head">ANIMAL HANGMAN</h2>
+    </div>
+    <br>
+    <div class="game-view">
+        <div class="container">
+            <div>
+                <span class="public-word"></span>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div>
+            <ul>
+                <div class="row guessed-letters">Letters Guessed:</div>
+                <div class="guesses-left"></div>
+                <div class="wins">Wins:</div>
+                <div class="losses">Losses:</div>
+                <br>
+                <br>
+                <div class="on-complete">Press Any Key To Continue</div>
+                <br>
+                <br>
+            </ul>
+        </div>
+    </div>
 </body>
 
 </html>
