@@ -7,7 +7,7 @@ $(document).ready(function() {
 
     var hangmanGame = {
 
-        words: ["elephant", "walrus", "two dogs", "fox", "salamander", "cat", "dog", "condor", "ardvark", "ant eater", "fruit bat"],
+        words: ["elephant", "walrus", "two dogs", "fox", "salamander", "cat", "dog", "condor", "ardvark", "ant eater", "fruit bat", "peacock", "dolphin", "rat"],
         alphabet: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
         // words: ["two dogs"],
 
@@ -55,6 +55,9 @@ $(document).ready(function() {
             //constructs number of guesses the users gets, based on letters in word. Guesses < 12, or it would be to easy for user to force through game
             this.setGuesses();
 
+                this.constructWordView();
+
+
 
 
         },
@@ -69,7 +72,7 @@ $(document).ready(function() {
         //converts word to dashes to be displayed.
         constructWordView: function() {
 
-
+        	if (this.gameComplete === false) {
             var publicWord = "";
 
             for (var i = 0; i < this.lettersOfTheWord.length; i++) {
@@ -83,6 +86,7 @@ $(document).ready(function() {
             }
 
             $(".public-word").html(publicWord);
+        }
 
         },
 
@@ -235,9 +239,10 @@ $(document).ready(function() {
                     publicWord += this.lettersOfTheWord[i];
                 } 
 
-                console.log("finishGameFunction");
-            
+                publicWord = publicWord.toString();
+            $(".public-word").empty();                
             $(".public-word").html(publicWord);
+
 
             // setInterval(function(){}, 3000);
 
@@ -267,7 +272,7 @@ $(document).ready(function() {
     };
 
     hangmanGame.setUpGame();
-    hangmanGame.constructWordView();
+    // hangmanGame.constructWordView();
 
     //at t his point, letters of word has a randomly chosen word in it, guess letters is empty, matched letters is empty
 
